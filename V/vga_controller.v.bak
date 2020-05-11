@@ -1,0 +1,113 @@
+/* 
+ * 
+ * VGA controller module, from DE-10 example project
+ * 
+ */
+
+module vga_controller(
+    in_reset_n,
+    in_vga_clock,
+    // in_vmem_data,
+    out_blank_n,
+    out_h_sync,
+    out_v_sync,
+    out_b_data,
+    out_g_data,
+    out_r_data,
+    // out_vmem_address
+);
+
+    //=======================================================
+    // I/O
+    //=======================================================
+    input           in_reset_n;
+    input           in_vga_clock;
+    output  reg     out_blank_n;
+    output  reg     out_h_sync;
+    output  reg     out_v_sync;
+    output  [7:0]   out_b_data;
+    output  [7:0]   out_g_data;
+    output  [7:0]   out_r_data;
+
+    //=======================================================
+    // Reg/write declarations
+    //=======================================================
+    reg     [18:0]  video_mem_address;
+    reg     [23:0]  bgr_data;
+    wire            vga_clk_n;
+    wire    [7:0]   index;
+    wire    [23:0]  bgr_data_raw;
+    wire    h_sync;
+    wire    blank_n;
+    wire    v_sync;
+    wire    reset;
+
+    //=======================================================
+    // Structural coding
+    //=======================================================
+    
+    // 640 x 480 in 24-bit color:
+    // We need 307,200 pixels * 24 bits of memory for a full screen
+    // 19 bits can address 2^19 = 524,288‬ total pixels
+    // 
+    // 800 x 600 in 24-bit color:
+    // We need 480,000 pixels * 24 bits of memory for a full screen
+    // 19 bits can address 2^19 = 524,288 total pixels
+
+    // Internal reset signal
+    assign reset = ~in_reset_n;
+
+    // Instantiate the video sync generator
+    // Will generate all of the requisite VGA signals (blank, h-sync, v-sync) from the VGA clock
+    video_sync_generator video_sync_generator_instance (
+        .in_vga_clk(in_vga_clock),
+        .in_reset(reset),
+        .out_blank_n(blank_n),
+        .out_h_sync(h_sync),
+        .out_v_sync(v_sync)
+    );
+
+    // Addresss generator
+    always@(posedge in_vga_clock,negedge in_reset_n)
+    begin
+      if (!in_reset_n)
+         video_mem_address <= 19'd0;
+      else if (h_sync == 1'b0 && v_sync == 1'b0)
+         video_mem_address <= 19'd0;
+      else if (blank_n == 1'b1)
+         video_mem_address <= video_mem_address + 1;
+    end
+
+    // INDEX addr.
+    assign vga_clk_n = ~in_vga_clock;
+    imout_g_data  imout_g_data_inst (
+        .video_mem_address(video_mem_address),
+        .clock(vga_clk_n),
+        .q(index)
+    );
+
+    // Color table output
+    img_index img_index_inst (
+        .video_mem_address(index),
+        .clock(in_vga_clock),
+        .q(bgr_data_raw)
+    );  
+
+    // latch valid data at falling edge;
+    always @ (posedge vga_clk_n)
+    begin
+        bgr_data <= bgr_data_raw;
+    end
+    assign out_b_data = bgr_data[23:16];
+    assign out_g_data = bgr_data[15:8];
+    assign out_r_data = bgr_data[7:0];
+
+    // Delay the iHD, iVD, iDEN for one clock cycle;
+    always@(negedge in_vga_clock)
+    begin
+        out_h_sync <= h_sync;
+        out_v_sync <= v_sync;
+        out_blank_n <= blank_n;
+    end
+
+endmodule
