@@ -62,14 +62,14 @@ module video_sync_generator(
     parameter h_active_cycles = 640;
     parameter h_front_porch =   16;
     parameter h_sync_cycles =   96;
-    parameter h_back_porch  =   144;
-    parameter h_max_cycles =    h_active_cycles + h_front_porch + h_back_porch;
+    parameter h_back_porch  =   48;
+    parameter h_max_cycles =    h_active_cycles + h_front_porch + h_sync_cycles + h_back_porch;
     // Verical
     parameter v_active_cycles = 480;
-    parameter v_front_porch =   11;
+    parameter v_front_porch =   10;
     parameter v_sync_cycles =   2;
-    parameter v_back_porch =    34;
-    parameter v_max_cycles =    v_active_cycles + v_front_porch + v_back_porch;
+    parameter v_back_porch =    33;
+    parameter v_max_cycles =    v_active_cycles + v_front_porch + v_sync_cycles + v_back_porch;
 
     /*
     // This doesn't really work well - probably a weird format.
