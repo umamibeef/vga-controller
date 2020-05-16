@@ -1,5 +1,5 @@
 Timing Analyzer report for DE10_Standard_default
-Fri May 08 22:32:05 2020
+Fri May 15 21:44:33 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -103,26 +103,26 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 32          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 2.44        ;
+; Average used               ; 2.63        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  10.5%      ;
-;     Processor 3            ;   9.7%      ;
-;     Processor 4            ;   9.7%      ;
-;     Processor 5            ;   9.5%      ;
-;     Processor 6            ;   9.5%      ;
-;     Processor 7            ;   9.5%      ;
-;     Processor 8            ;   9.5%      ;
-;     Processor 9            ;   9.5%      ;
-;     Processor 10           ;   9.5%      ;
-;     Processor 11           ;   9.5%      ;
-;     Processor 12           ;   9.5%      ;
-;     Processor 13           ;   9.5%      ;
-;     Processor 14           ;   9.5%      ;
-;     Processor 15           ;   9.5%      ;
-;     Processor 16           ;   9.4%      ;
+;     Processor 2            ;  11.9%      ;
+;     Processor 3            ;  10.9%      ;
+;     Processor 4            ;  10.8%      ;
+;     Processor 5            ;  10.8%      ;
+;     Processor 6            ;  10.8%      ;
+;     Processor 7            ;  10.8%      ;
+;     Processor 8            ;  10.8%      ;
+;     Processor 9            ;  10.8%      ;
+;     Processor 10           ;  10.7%      ;
+;     Processor 11           ;  10.7%      ;
+;     Processor 12           ;  10.7%      ;
+;     Processor 13           ;  10.7%      ;
+;     Processor 14           ;  10.7%      ;
+;     Processor 15           ;  10.7%      ;
+;     Processor 16           ;  10.7%      ;
 +----------------------------+-------------+
 
 
@@ -131,7 +131,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------+--------+--------------------------+
 ; SDC File Path             ; Status ; Read at                  ;
 +---------------------------+--------+--------------------------+
-; DE10_Standard_default.SDC ; OK     ; Fri May 08 22:31:53 2020 ;
+; DE10_Standard_default.SDC ; OK     ; Fri May 15 21:44:22 2020 ;
 +---------------------------+--------+--------------------------+
 
 
@@ -155,9 +155,9 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+--------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                               ; Note ;
 +------------+-----------------+--------------------------------------------------------------------------+------+
-; 43.09 MHz  ; 43.09 MHz       ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-; 210.84 MHz ; 210.84 MHz      ; CLOCK_50                                                                 ;      ;
-; 328.84 MHz ; 328.84 MHz      ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 52.07 MHz  ; 52.07 MHz       ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 214.22 MHz ; 214.22 MHz      ; CLOCK_50                                                                 ;      ;
+; 323.42 MHz ; 323.42 MHz      ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
 +------------+-----------------+--------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -173,9 +173,9 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.396  ; 0.000         ;
-; CLOCK_50                                                                 ; 15.257 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 52.514 ; 0.000         ;
+; CLOCK_50                                                                 ; 15.332 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 20.796 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 52.463 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -184,9 +184,9 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                                 ; 0.235 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.321 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.334 ; 0.000         ;
+; CLOCK_50                                                                 ; 0.241 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.339 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.454 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -195,8 +195,8 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -2.451 ; -39.166       ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.728 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -2.452 ; -39.188       ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.724 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -205,8 +205,8 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.244 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2.609 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.270 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.480 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -216,9 +216,9 @@ HTML report is unavailable in plain text report export.
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
 ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.111  ; 0.000         ;
-; CLOCK_50                                                                 ; 8.922  ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.774 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.062 ; 0.000         ;
+; CLOCK_50                                                                 ; 8.779  ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 19.156 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.065 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -233,9 +233,9 @@ No synchronizer chains to report.
 +------------+-----------------+--------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                               ; Note ;
 +------------+-----------------+--------------------------------------------------------------------------+------+
-; 44.24 MHz  ; 44.24 MHz       ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-; 203.29 MHz ; 203.29 MHz      ; CLOCK_50                                                                 ;      ;
-; 332.12 MHz ; 332.12 MHz      ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 53.3 MHz   ; 53.3 MHz        ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 209.78 MHz ; 209.78 MHz      ; CLOCK_50                                                                 ;      ;
+; 328.62 MHz ; 328.62 MHz      ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
 +------------+-----------------+--------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -245,9 +245,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.699  ; 0.000         ;
-; CLOCK_50                                                                 ; 15.081 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 52.544 ; 0.000         ;
+; CLOCK_50                                                                 ; 15.233 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 21.238 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 52.512 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -256,9 +256,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                                 ; 0.223 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.293 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.374 ; 0.000         ;
+; CLOCK_50                                                                 ; 0.228 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.373 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.438 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -267,8 +267,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -2.368 ; -37.836       ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.846 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -2.371 ; -37.890       ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.947 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -277,8 +277,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.271 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2.519 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.295 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.353 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -288,8 +288,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
 ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.111  ; 0.000         ;
-; CLOCK_50                                                                 ; 8.875  ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.756 ; 0.000         ;
+; CLOCK_50                                                                 ; 8.762  ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 19.160 ; 0.000         ;
 ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.028 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
@@ -305,9 +305,9 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.252 ; 0.000         ;
-; CLOCK_50                                                                 ; 17.052 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 53.905 ; 0.000         ;
+; CLOCK_50                                                                 ; 16.995 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.980 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 53.786 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -316,9 +316,9 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                                 ; 0.134 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.190 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.200 ; 0.000         ;
+; CLOCK_50                                                                 ; 0.137 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.215 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.236 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -327,8 +327,8 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.552 ; -8.811        ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 15.316 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.557 ; -8.893        ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 15.450 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -337,8 +337,8 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.793 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.580 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.806 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2.117 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -348,9 +348,9 @@ No synchronizer chains to report.
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
 ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.111  ; 0.000         ;
-; CLOCK_50                                                                 ; 8.803  ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.887 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.322 ; 0.000         ;
+; CLOCK_50                                                                 ; 8.709  ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 19.524 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.323 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -365,9 +365,9 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 13.076 ; 0.000         ;
-; CLOCK_50                                                                 ; 17.191 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 54.034 ; 0.000         ;
+; CLOCK_50                                                                 ; 17.179 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 29.235 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 53.934 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -376,9 +376,9 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; CLOCK_50                                                                 ; 0.124 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.173 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.191 ; 0.000         ;
+; CLOCK_50                                                                 ; 0.126 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.206 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.235 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -387,8 +387,8 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.457 ; -7.296        ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 15.677 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.462 ; -7.378        ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 15.791 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -397,8 +397,8 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                    ; Slack ; End Point TNS ;
 +--------------------------------------------------------------------------+-------+---------------+
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.759 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.406 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.768 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.881 ; 0.000         ;
 +--------------------------------------------------------------------------+-------+---------------+
 
 
@@ -408,9 +408,9 @@ No synchronizer chains to report.
 ; Clock                                                                    ; Slack  ; End Point TNS ;
 +--------------------------------------------------------------------------+--------+---------------+
 ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.111  ; 0.000         ;
-; CLOCK_50                                                                 ; 8.750  ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.888 ; 0.000         ;
-; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.315 ; 0.000         ;
+; CLOCK_50                                                                 ; 8.686  ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 19.527 ; 0.000         ;
+; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.314 ; 0.000         ;
 +--------------------------------------------------------------------------+--------+---------------+
 
 
@@ -425,16 +425,16 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
 ; Clock                                                                     ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +---------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack                                                          ; 8.396  ; 0.124 ; -2.451   ; 0.759   ; 1.111               ;
-;  CLOCK_50                                                                 ; 15.081 ; 0.124 ; N/A      ; N/A     ; 8.750               ;
+; Worst-case Slack                                                          ; 15.233 ; 0.126 ; -2.452   ; 0.768   ; 1.111               ;
+;  CLOCK_50                                                                 ; 15.233 ; 0.126 ; N/A      ; N/A     ; 8.686               ;
 ;  u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 1.111               ;
-;  u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.396  ; 0.191 ; 12.728   ; 1.406   ; 18.756              ;
-;  u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 52.514 ; 0.173 ; -2.451   ; 0.759   ; 27.028              ;
-; Design-wide TNS                                                           ; 0.0    ; 0.0   ; -39.166  ; 0.0     ; 0.0                 ;
+;  u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 20.796 ; 0.235 ; 12.724   ; 1.881   ; 19.156              ;
+;  u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 52.463 ; 0.206 ; -2.452   ; 0.768   ; 27.028              ;
+; Design-wide TNS                                                           ; 0.0    ; 0.0   ; -39.188  ; 0.0     ; 0.0                 ;
 ;  CLOCK_50                                                                 ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
 ;  u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
 ;  u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
-;  u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000  ; 0.000 ; -39.166  ; 0.000   ; 0.000               ;
+;  u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000  ; 0.000 ; -39.188  ; 0.000   ; 0.000               ;
 +---------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
 
 
@@ -1263,8 +1263,8 @@ No synchronizer chains to report.
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                               ; To Clock                                                                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                                                 ; CLOCK_50                                                                 ; 1472     ; 0        ; 0        ; 0        ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 228      ; 616      ; 5724     ; 530      ;
+; CLOCK_50                                                                 ; CLOCK_50                                                                 ; 1577     ; 0        ; 0        ; 0        ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0        ; 0        ; 0        ; 31474043 ;
 ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 155      ; 0        ; 0        ; 0        ;
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -1275,8 +1275,8 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                               ; To Clock                                                                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                                                 ; CLOCK_50                                                                 ; 1472     ; 0        ; 0        ; 0        ;
-; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 228      ; 616      ; 5724     ; 530      ;
+; CLOCK_50                                                                 ; CLOCK_50                                                                 ; 1577     ; 0        ; 0        ; 0        ;
+; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0        ; 0        ; 0        ; 31474043 ;
 ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 155      ; 0        ; 0        ; 0        ;
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -1287,7 +1287,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock ; To Clock                                                                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50   ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 24       ; 0        ; 23       ; 0        ;
+; CLOCK_50   ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0        ; 0        ; 20       ; 0        ;
 ; CLOCK_50   ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 32       ; 0        ; 0        ; 0        ;
 +------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -1298,7 +1298,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock ; To Clock                                                                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50   ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 24       ; 0        ; 23       ; 0        ;
+; CLOCK_50   ; u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0        ; 0        ; 20       ; 0        ;
 ; CLOCK_50   ; u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; 32       ; 0        ; 0        ; 0        ;
 +------------+--------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -1324,9 +1324,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 3     ; 3    ;
 ; Unconstrained Input Ports       ; 3     ; 3    ;
-; Unconstrained Input Port Paths  ; 167   ; 167  ;
+; Unconstrained Input Port Paths  ; 164   ; 164  ;
 ; Unconstrained Output Ports      ; 88    ; 88   ;
-; Unconstrained Output Port Paths ; 283   ; 283  ;
+; Unconstrained Output Port Paths ; 282   ; 282  ;
 +---------------------------------+-------+------+
 
 
@@ -1568,37 +1568,36 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri May 08 22:31:50 2020
+    Info: Processing started: Fri May 15 21:44:18 2020
 Info: Command: quartus_sta DE10_Standard_default -c DE10_Standard_default
 Info: qsta_default_script.tcl version: #1
-Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (332104): Reading SDC File: 'DE10_Standard_default.SDC'
-Warning (332174): Ignored filter at DE10_Standard_default.sdc(15): altera_reserved_tck could not be matched with a port or pin or register or keeper or net or combinational node or node File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 15
-Warning (332049): Ignored create_clock at DE10_Standard_default.sdc(15): Argument <targets> is not an object ID File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 15
-    Info (332050): create_clock -name {altera_reserved_tck} -period 40 {altera_reserved_tck} File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 15
-Warning (332174): Ignored filter at DE10_Standard_default.sdc(16): altera_reserved_tdi could not be matched with a port File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 16
-Warning (332174): Ignored filter at DE10_Standard_default.sdc(16): altera_reserved_tck could not be matched with a clock File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 16
-Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(16): Argument <targets> is an empty collection File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 16
-    Info (332050): set_input_delay -clock altera_reserved_tck -clock_fall 3 [get_ports altera_reserved_tdi] File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 16
-Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(16): Argument -clock is not an object ID File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 16
-Warning (332174): Ignored filter at DE10_Standard_default.sdc(17): altera_reserved_tms could not be matched with a port File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 17
-Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(17): Argument <targets> is an empty collection File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 17
-    Info (332050): set_input_delay -clock altera_reserved_tck -clock_fall 3 [get_ports altera_reserved_tms] File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 17
-Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(17): Argument -clock is not an object ID File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 17
-Warning (332174): Ignored filter at DE10_Standard_default.sdc(18): altera_reserved_tdo could not be matched with a port File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 18
-Warning (332049): Ignored set_output_delay at DE10_Standard_default.sdc(18): Argument <targets> is an empty collection File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 18
-    Info (332050): set_output_delay -clock altera_reserved_tck 3 [get_ports altera_reserved_tdo] File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 18
-Warning (332049): Ignored set_output_delay at DE10_Standard_default.sdc(18): Argument -clock is not an object ID File: C:/Repos/gameboy-vga/DE10_Standard_default.sdc Line: 18
+Warning (332174): Ignored filter at DE10_Standard_default.sdc(15): altera_reserved_tck could not be matched with a port or pin or register or keeper or net or combinational node or node File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 15
+Warning (332049): Ignored create_clock at DE10_Standard_default.sdc(15): Argument <targets> is not an object ID File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 15
+    Info (332050): create_clock -name {altera_reserved_tck} -period 40 {altera_reserved_tck} File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 15
+Warning (332174): Ignored filter at DE10_Standard_default.sdc(16): altera_reserved_tdi could not be matched with a port File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 16
+Warning (332174): Ignored filter at DE10_Standard_default.sdc(16): altera_reserved_tck could not be matched with a clock File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 16
+Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(16): Argument <targets> is an empty collection File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 16
+    Info (332050): set_input_delay -clock altera_reserved_tck -clock_fall 3 [get_ports altera_reserved_tdi] File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 16
+Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(16): Argument -clock is not an object ID File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 16
+Warning (332174): Ignored filter at DE10_Standard_default.sdc(17): altera_reserved_tms could not be matched with a port File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 17
+Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(17): Argument <targets> is an empty collection File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 17
+    Info (332050): set_input_delay -clock altera_reserved_tck -clock_fall 3 [get_ports altera_reserved_tms] File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 17
+Warning (332049): Ignored set_input_delay at DE10_Standard_default.sdc(17): Argument -clock is not an object ID File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 17
+Warning (332174): Ignored filter at DE10_Standard_default.sdc(18): altera_reserved_tdo could not be matched with a port File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 18
+Warning (332049): Ignored set_output_delay at DE10_Standard_default.sdc(18): Argument <targets> is an empty collection File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 18
+    Info (332050): set_output_delay -clock altera_reserved_tck 3 [get_ports altera_reserved_tdo] File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 18
+Warning (332049): Ignored set_output_delay at DE10_Standard_default.sdc(18): Argument -clock is not an object ID File: C:/Repos/vga-controller/DE10_Standard_default.sdc Line: 18
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin} -divide_by 2 -multiply_by 18 -duty_cycle 50.00 -name {u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]} {u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}
     Info (332110): create_generated_clock -source {u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]} -divide_by 18 -duty_cycle 50.00 -name {u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk} {u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}
     Info (332110): create_generated_clock -source {u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]} -divide_by 25 -duty_cycle 50.00 -name {u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk} {u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
 Warning (332060): Node: I2C_AV_Config:u3|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[8] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
+    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[14] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
 Warning (332060): Node: AUDIO_DAC:u2|LRCK_1X was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_DAC:u2|SIN_Cont[5] is being clocked by AUDIO_DAC:u2|LRCK_1X
 Warning (332060): Node: AUDIO_DAC:u2|oAUD_BCK was determined to be a clock but was found without an associated clock assignment.
@@ -1611,42 +1610,42 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
-Info (332146): Worst-case setup slack is 8.396
+Info (332146): Worst-case setup slack is 15.332
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.396               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    15.257               0.000 CLOCK_50 
-    Info (332119):    52.514               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.235
+    Info (332119):    15.332               0.000 CLOCK_50 
+    Info (332119):    20.796               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    52.463               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.241
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.235               0.000 CLOCK_50 
-    Info (332119):     0.321               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.334               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.241               0.000 CLOCK_50 
+    Info (332119):     0.339               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.454               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case recovery slack is -2.451
+Info (332146): Worst-case recovery slack is -2.452
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.451             -39.166 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    12.728               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 1.244
+    Info (332119):    -2.452             -39.188 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    12.724               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 1.270
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.244               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     2.609               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     1.270               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     3.480               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 1.111
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.111               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.922               0.000 CLOCK_50 
-    Info (332119):    18.774               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    27.062               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.779               0.000 CLOCK_50 
+    Info (332119):    19.156               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    27.065               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Warning (332060): Node: I2C_AV_Config:u3|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[8] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
+    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[14] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
 Warning (332060): Node: AUDIO_DAC:u2|LRCK_1X was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_DAC:u2|SIN_Cont[5] is being clocked by AUDIO_DAC:u2|LRCK_1X
 Warning (332060): Node: AUDIO_DAC:u2|oAUD_BCK was determined to be a clock but was found without an associated clock assignment.
@@ -1657,42 +1656,42 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
     Info (332098): Cell: u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
     Info (332098): Cell: u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 8.699
+Info (332146): Worst-case setup slack is 15.233
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.699               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    15.081               0.000 CLOCK_50 
-    Info (332119):    52.544               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.223
+    Info (332119):    15.233               0.000 CLOCK_50 
+    Info (332119):    21.238               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    52.512               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.228
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.223               0.000 CLOCK_50 
-    Info (332119):     0.293               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.374               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.228               0.000 CLOCK_50 
+    Info (332119):     0.373               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.438               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case recovery slack is -2.368
+Info (332146): Worst-case recovery slack is -2.371
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.368             -37.836 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    12.846               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 1.271
+    Info (332119):    -2.371             -37.890 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    12.947               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 1.295
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.271               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     2.519               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     1.295               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     3.353               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 1.111
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.111               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.875               0.000 CLOCK_50 
-    Info (332119):    18.756               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.762               0.000 CLOCK_50 
+    Info (332119):    19.160               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
     Info (332119):    27.028               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Warning (332060): Node: I2C_AV_Config:u3|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[8] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
+    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[14] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
 Warning (332060): Node: AUDIO_DAC:u2|LRCK_1X was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_DAC:u2|SIN_Cont[5] is being clocked by AUDIO_DAC:u2|LRCK_1X
 Warning (332060): Node: AUDIO_DAC:u2|oAUD_BCK was determined to be a clock but was found without an associated clock assignment.
@@ -1703,40 +1702,40 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
     Info (332098): Cell: u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
     Info (332098): Cell: u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 12.252
+Info (332146): Worst-case setup slack is 16.995
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    12.252               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    17.052               0.000 CLOCK_50 
-    Info (332119):    53.905               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.134
+    Info (332119):    16.995               0.000 CLOCK_50 
+    Info (332119):    27.980               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    53.786               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.137
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.134               0.000 CLOCK_50 
-    Info (332119):     0.190               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.200               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.137               0.000 CLOCK_50 
+    Info (332119):     0.215               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.236               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case recovery slack is -0.552
+Info (332146): Worst-case recovery slack is -0.557
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.552              -8.811 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    15.316               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.793
+    Info (332119):    -0.557              -8.893 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.450               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 0.806
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.793               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     1.580               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.806               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     2.117               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 1.111
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.111               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.803               0.000 CLOCK_50 
-    Info (332119):    18.887               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    27.322               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.709               0.000 CLOCK_50 
+    Info (332119):    19.524               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    27.323               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Fast 1100mV 0C Model
 Warning (332060): Node: I2C_AV_Config:u3|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[8] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
+    Info (13166): Register I2C_AV_Config:u3|mI2C_DATA[14] is being clocked by I2C_AV_Config:u3|mI2C_CTRL_CLK
 Warning (332060): Node: AUDIO_DAC:u2|LRCK_1X was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_DAC:u2|SIN_Cont[5] is being clocked by AUDIO_DAC:u2|LRCK_1X
 Warning (332060): Node: AUDIO_DAC:u2|oAUD_BCK was determined to be a clock but was found without an associated clock assignment.
@@ -1747,43 +1746,43 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
     Info (332098): Cell: u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
     Info (332098): Cell: u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 13.076
+Info (332146): Worst-case setup slack is 17.179
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    13.076               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    17.191               0.000 CLOCK_50 
-    Info (332119):    54.034               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.124
+    Info (332119):    17.179               0.000 CLOCK_50 
+    Info (332119):    29.235               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    53.934               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.126
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.124               0.000 CLOCK_50 
-    Info (332119):     0.173               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.191               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.126               0.000 CLOCK_50 
+    Info (332119):     0.206               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.235               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case recovery slack is -0.457
+Info (332146): Worst-case recovery slack is -0.462
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.457              -7.296 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    15.677               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.759
+    Info (332119):    -0.462              -7.378 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.791               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 0.768
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.759               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     1.406               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.768               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     1.881               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 1.111
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.111               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.750               0.000 CLOCK_50 
-    Info (332119):    18.888               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    27.315               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.686               0.000 CLOCK_50 
+    Info (332119):    19.527               0.000 u1|vga_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    27.314               0.000 u1|vga_audio_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 29 warnings
-    Info: Peak virtual memory: 5393 megabytes
-    Info: Processing ended: Fri May 08 22:32:05 2020
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 5379 megabytes
+    Info: Processing ended: Fri May 15 21:44:33 2020
     Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:28
+    Info: Total CPU time (on all processors): 00:00:29
 
 

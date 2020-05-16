@@ -32,7 +32,7 @@ module font_rom(
     //=======================================================
     // I/O
     //=======================================================
-    input   [7:0] char;
+    input   [7:0] in_char;
     input   [2:0] in_pixel_x;
     input   [3:0] in_pixel_y;
     output  out_pixel;
@@ -44,14 +44,19 @@ module font_rom(
     // Font ROM is organized by rows of pixel data. Recall that characters are
     // 8x16 pixels in dimension. Since there are 256 total characters, then the
     // ROM will have (256 * 16) by 8 entries.
-    reg     [7:0] font_rom [0:4096];
-    $readmemb("font_rom.mem", font_rom);
+    reg     [7:0] font_rom [0:4095];
+     
+    initial
+    begin
+        $readmemb("font_rom.mem", font_rom);
+    end
+
 
     //=======================================================
     // Structural coding
     //=======================================================
     
-    assign out_pixel <= font_rom[{char,in_pixel_y}][in_pixel_x];
+    assign out_pixel = font_rom[{in_char, in_pixel_y}][in_pixel_x];
 
 endmodule
 
@@ -75,29 +80,29 @@ module vga_controller(
     //=======================================================
     input   in_reset_n;
     input   in_vga_clock;
-    input   reg [15:0] in_text_vmem_data;
+    input   [15:0] in_text_vmem_data;
     output  reg out_blank_n;
     output  reg out_h_sync;
     output  reg out_v_sync;
     output  [7:0] out_r_data;
     output  [7:0] out_g_data;
     output  [7:0] out_b_data;
-    output  reg [12:0] out_text_vmem_address;
+    output  [12:0] out_text_vmem_address;
 
     //=======================================================
     // Reg/wire declarations
     //=======================================================
-    reg     [9:0] pixel_y;
-    reg     [9:0] pixel_x;
-    reg     [6:0] text_vram_col;
-    reg     [5:0] text_vram_row;
-    reg     [12:0] text_vram_offset;
-    reg     [4:0] vga_color;
+    wire    [9:0] pixel_y;
+    wire    [9:0] pixel_x;
+    wire    [6:0] text_vram_col;
+    wire    [5:0] text_vram_row;
+    wire    [12:0] text_vram_offset;
+    wire    [4:0] vga_color;
     reg     [23:0] rgb_data;
     wire    vga_clock_n;
     wire    current_pixel;
     wire    [7:0] index;
-    wire    [23:0] rgb_data_raw;
+    reg     [23:0] rgb_data_raw;
     wire    h_sync;
     wire    blank_n;
     wire    v_sync;
@@ -125,30 +130,12 @@ module vga_controller(
     video_sync_generator video_sync_generator_instance (
         .in_vga_clk(in_vga_clock),
         .in_reset(reset),
+        .out_pixel_x(pixel_x),
+        .out_pixel_y(pixel_y),
         .out_blank_n(blank_n),
         .out_h_sync(h_sync),
-        .out_v_sync(v_sync)
+        .out_v_sync(v_sync),
         );
-
-    // Pixel row and column generator
-    always @ (posedge in_vga_clock, negedge in_reset_n)
-        begin
-            // Reset address if reset_n is asserted
-            if (!in_reset_n)
-                pixel_x <= 10'd0;
-                pixel_y <= 10'd0;
-            // When horizontal and vertical syncs are asserted, we need to go back to the beginning
-            else if (h_sync == 1'b0 && v_sync == 1'b0)
-                pixel_x <= 10'd0;
-                pixel_y <= 10'd0;
-            // When horizontal sync, we need to go to the next line
-            else if (h_sync == 1'b0 && v_sync == 1'b1)
-                pixel_x <= 10'd0;
-                pixel_y <= pixel_y + 1;
-            // When not blanked, we increment to the next pixel
-            else if (blank_n == 1'b1)
-                pixel_x <= pixel_x + 1;
-        end
 
     // Text VRAM address generator. Character size is 8x16, so lower 3 and 4
     // bits of pixel's x and y coordinates are for addressing the col/row of the
@@ -164,8 +151,8 @@ module vga_controller(
     // Font ROM
     font_rom font_rom_instance (
         .in_char(in_text_vmem_data[7:0]),
-        .in_pixel_x(pixel_x),
-        .in_pixel_y(pixel_y),
+        .in_pixel_x(pixel_x[2:0]),
+        .in_pixel_y(pixel_y[3:0]),
         .out_pixel(current_pixel),
         );
 
@@ -173,25 +160,26 @@ module vga_controller(
     always @ (vga_color)
         begin
             case (vga_color)
-                4'h0 : rgb_data_raw <= VGA_BLACK;
-                4'h1 : rgb_data_raw <= VGA_BLUE;
-                4'h2 : rgb_data_raw <= VGA_GREEN;
-                4'h3 : rgb_data_raw <= VGA_CYAN;
-                4'h4 : rgb_data_raw <= VGA_RED;
-                4'h5 : rgb_data_raw <= VGA_MAGENTA;
-                4'h6 : rgb_data_raw <= VGA_BROWN;
-                4'h7 : rgb_data_raw <= VGA_WHITE;
-                4'h8 : rgb_data_raw <= VGA_GRAY;
-                4'h9 : rgb_data_raw <= VGA_LT_BLUE;
-                4'hA : rgb_data_raw <= VGA_LT_GREEN;
-                4'hB : rgb_data_raw <= VGA_LT_CYAN;
-                4'hC : rgb_data_raw <= VGA_LT_RED;
-                4'hD : rgb_data_raw <= VGA_LT_MAGENTA;
-                4'hE : rgb_data_raw <= VGA_YELLOW;
-                4'hF : rgb_data_raw <= VGA_BT_WHITE;
-                default : rgb_data_raw <= VGA_BLACK;
+                4'h0 : rgb_data_raw <= `VGA_BLACK;
+                4'h1 : rgb_data_raw <= `VGA_BLUE;
+                4'h2 : rgb_data_raw <= `VGA_GREEN;
+                4'h3 : rgb_data_raw <= `VGA_CYAN;
+                4'h4 : rgb_data_raw <= `VGA_RED;
+                4'h5 : rgb_data_raw <= `VGA_MAGENTA;
+                4'h6 : rgb_data_raw <= `VGA_BROWN;
+                4'h7 : rgb_data_raw <= `VGA_WHITE;
+                4'h8 : rgb_data_raw <= `VGA_GRAY;
+                4'h9 : rgb_data_raw <= `VGA_LT_BLUE;
+                4'hA : rgb_data_raw <= `VGA_LT_GREEN;
+                4'hB : rgb_data_raw <= `VGA_LT_CYAN;
+                4'hC : rgb_data_raw <= `VGA_LT_RED;
+                4'hD : rgb_data_raw <= `VGA_LT_MAGENTA;
+                4'hE : rgb_data_raw <= `VGA_YELLOW;
+                4'hF : rgb_data_raw <= `VGA_BT_WHITE;
+                default : rgb_data_raw <= `VGA_BLACK;
             endcase
         end
+
     // Assign background and foreground signals
     assign text_vmem_data_foreground = in_text_vmem_data[11:8];
     assign text_vmem_data_background = in_text_vmem_data[15:2];

@@ -7,6 +7,8 @@
 module video_sync_generator(
     in_reset,
     in_vga_clk,
+    out_pixel_x,
+    out_pixel_y,
     out_blank_n,
     out_h_sync,
     out_v_sync
@@ -14,6 +16,8 @@ module video_sync_generator(
                             
     input in_reset;
     input in_vga_clk;
+    output reg [9:0] out_pixel_x;
+    output reg [9:0] out_pixel_y;
     output reg out_blank_n;
     output reg out_h_sync;
     output reg out_v_sync;
@@ -63,21 +67,23 @@ module video_sync_generator(
     parameter h_sync_cycle = 96;
     parameter v_sync_cycle = 2;
 
-    reg     [10:0] h_count;
+    reg     [9:0] h_count;
     reg     [9:0] v_count;
+    wire    [9:0] pixel_x;
+    wire    [9:0] pixel_y;
     wire    h_sync, v_sync, blank_n, hori_valid, vert_valid;
 
     always @ (negedge in_vga_clk, posedge in_reset)
         begin
             if (in_reset)
                 begin
-                    h_count <= 11'd0;
+                    h_count <= 10'd0;
                     v_count <= 10'd0;
                 end
             else
                 begin
                     if (h_count == hori_line - 1)
-                        begin 
+                        begin
                             h_count <= 11'd0;
                             if (v_count == vert_line - 1)
                                 v_count <= 10'd0;
@@ -89,17 +95,23 @@ module video_sync_generator(
                 end
         end
 
+    // X & Y pixel coordinates
+    assign pixel_x = (h_count < (hori_back + h_sync_cycle)) ? 0 : (h_count - (hori_back + h_sync_cycle));
+    assign pixel_y = (v_count < (vert_back + v_sync_cycle)) ? 0 : (v_count - (vert_back + v_sync_cycle));
+    // H & V sync
     assign h_sync = (h_count < h_sync_cycle) ? 1'b0 : 1'b1;
     assign v_sync = (v_count < v_sync_cycle) ? 1'b0 : 1'b1;
+    // active display
     assign hori_valid = (h_count < (hori_line - hori_front) && h_count >= hori_back) ? 1'b1 : 1'b0;
     assign vert_valid = (v_count < (vert_line - vert_front) && v_count >= vert_back) ? 1'b1 : 1'b0;
-
     assign blank_n = hori_valid && vert_valid;
 
     always @ (negedge in_vga_clk)
     begin
         out_h_sync <= h_sync;
         out_v_sync <= v_sync;
+        out_pixel_x <= pixel_x;
+        out_pixel_y <= pixel_y;
         out_blank_n <= blank_n;
     end
 
