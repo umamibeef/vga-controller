@@ -1,6 +1,6 @@
 /* 
  * 
- * VGA signal generator, from DE-10 example project
+ * VGA signal generator, derived from DE-10 example project
  * 
  */
 
@@ -59,17 +59,17 @@ module video_sync_generator(
 
     // Parameters for 640x480 60Hz @ 25 MHz pixel clock
     // Horizontal
-    parameter h_max_cycles =    800;
     parameter h_active_cycles = 640;
     parameter h_front_porch =   16;
     parameter h_sync_cycles =   96;
     parameter h_back_porch  =   144;
+    parameter h_max_cycles =    h_active_cycles + h_front_porch + h_back_porch;
     // Verical
-    parameter v_max_cycles =    525;
     parameter v_active_cycles = 480;
     parameter v_front_porch =   11;
     parameter v_sync_cycles =   2;
     parameter v_back_porch =    34;
+    parameter v_max_cycles =    v_active_cycles + v_front_porch + v_back_porch;
 
     /*
     // This doesn't really work well - probably a weird format.
@@ -118,14 +118,14 @@ module video_sync_generator(
     end
 
     // X & Y pixel coordinates
-    assign pixel_x = (h_count < h_back_porch) ? 0 : (h_count - h_back_porch);
-    assign pixel_y = (v_count < v_back_porch) ? 0 : (v_count - v_back_porch);
+    assign pixel_x = (h_count < h_active_cycles) ? h_count : 10'b0;
+    assign pixel_y = (v_count < v_active_cycles) ? v_count : 10'b0;
     // H & V sync
-    assign h_sync = (h_count < h_sync_cycles) ? 1'b0 : 1'b1;
-    assign v_sync = (v_count < v_sync_cycles) ? 1'b0 : 1'b1;
+    assign h_sync = (h_count >= (h_active_cycles + h_front_porch)) && (h_count < (h_active_cycles + h_front_porch + h_sync_cycles)) ? 1'b0 : 1'b1;
+    assign v_sync = (v_count >= (v_active_cycles + v_front_porch)) && (v_count < (v_active_cycles + v_front_porch + v_sync_cycles)) ? 1'b0 : 1'b1;
     // Blank generation
-    assign h_valid = (h_count < (h_max_cycles - h_front_porch) && (h_count >= h_back_porch)) ? 1'b1 : 1'b0;
-    assign v_valid = (v_count < (v_max_cycles - v_front_porch) && (v_count >= v_back_porch)) ? 1'b1 : 1'b0;
+    assign h_valid = (h_count < h_active_cycles) ? 1'b1 : 1'b0;
+    assign v_valid = (v_count < v_active_cycles) ? 1'b1 : 1'b0;
     assign blank_n = h_valid && v_valid;
 
     always @ (negedge in_vga_clk)

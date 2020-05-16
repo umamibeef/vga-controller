@@ -1,6 +1,6 @@
 /* 
  * 
- * VGA controller module, from DE-10 example project
+ * VGA controller module, derived from DE-10 example project
  * 
  */
 
