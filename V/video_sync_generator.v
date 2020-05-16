@@ -24,87 +24,109 @@ module video_sync_generator(
 
     /*
         VGA Timing
-        Horizontal :
+        Horizontal:
                         ______________                 _____________
                        |              |               |
         _______________|  VIDEO       |_______________|  VIDEO (next line)
 
         ___________   _____________________   ______________________
                    |_|                     |_|
-                    B <-C-><----D----><-E->
-                   <------------A--------->
+                    B <-C-><----D----><-E-> B <-C->
+                   <------------A---------><-------
         The Unit used below are pixels;  
-          B->sync_cycle                   :hori_sync
-          C->back_porch                   :hori_back
+          B->sync_cycle                   :h_sync_cycles
+          C->back_porch                   :h_back_porch
           D->visible area
-          E->front porch                  :hori_front
-          A->horizontal line total length :hori_line
+          E->front porch                  :h_front_porch
+          A->horizontal line total length :h_max_cycles
 
-        Vertical :
+        Vertical:
                        ______________                 _____________
                       |              |               |          
         ______________|  VIDEO       |_______________|  VIDEO (next frame)
         
         __________   _____________________   ______________________
                   |_|                     |_|
-                   P <-Q-><----R----><-S->
-                  <-----------O---------->
+                   P <-Q-><----R----><-S-> P <-Q->
+                  <-----------O----------><-------
         The Unit used below are horizontal lines;  
-          P->sync_cycle                   :vert_sync
-          Q->back_porch                   :vert_back
+          P->sync_cycle                   :v_sync_cycles
+          Q->back_porch                   :v_back_porch
           R->visible area
-          S->front porch                  :vert_front
-          O->vertical line total length   :vert_line
+          S->front porch                  :v_front_porch
+          O->vertical line total length   :v_max_cycles
     */
 
-    // Parameters
-    parameter hori_line  = 800;
-    parameter hori_sync  = 96;
-    parameter hori_back  = 144;
-    parameter hori_front = 16;
-    parameter vert_line  = 525;
-    parameter vert_back  = 34;
-    parameter vert_front = 11;
-    parameter vert_sync  = 2;
+    // Parameters for 640x480 60Hz @ 25 MHz pixel clock
+    // Horizontal
+    parameter h_max_cycles =    800;
+    parameter h_active_cycles = 640;
+    parameter h_front_porch =   16;
+    parameter h_sync_cycles =   96;
+    parameter h_back_porch  =   144;
+    // Verical
+    parameter v_max_cycles =    525;
+    parameter v_active_cycles = 480;
+    parameter v_front_porch =   11;
+    parameter v_sync_cycles =   2;
+    parameter v_back_porch =    34;
+
+    /*
+    // This doesn't really work well - probably a weird format.
+    // Parameters for 800x600 72 Hz @ 50 MHz pixel clock
+    // Horizontal
+    parameter h_max_cycles =    1040;
+    parameter h_active_cycles = 800;
+    parameter h_front_porch =   56;
+    parameter h_sync_cycles =   120;
+    parameter h_back_porch  =   64;
+    // Verical
+    parameter v_max_cycles =    666;
+    parameter v_active_cycles = 600;
+    parameter v_front_porch =   37;
+    parameter v_sync_cycles =   6;
+    parameter v_back_porch =    23;
+    */
 
     reg     [10:0] h_count;
     reg     [9:0] v_count;
     wire    [9:0] pixel_x;
     wire    [9:0] pixel_y;
-    wire    h_sync, v_sync, blank_n, hori_valid, vert_valid;
+    wire    h_sync, v_sync, blank_n, h_valid, v_valid;
 
+    // h and v counter
     always @ (negedge in_vga_clk, posedge in_reset)
+    begin
+        if (in_reset)
         begin
-            if (in_reset)
-                begin
-                    h_count <= 11'd0;
-                    v_count <= 10'd0;
-                end
-            else
-                begin
-                    if (h_count == hori_line - 1)
-                        begin
-                            h_count <= 11'd0;
-                            if (v_count == vert_line - 1)
-                                v_count <= 10'd0;
-                            else
-                                v_count <= v_count + 1;
-                        end
-                    else
-                        h_count <= h_count + 1;
-                end
+            h_count <= 11'd0;
+            v_count <= 10'd0;
         end
+        else
+        begin
+            if (h_count == h_max_cycles - 1)
+            begin
+                h_count <= 11'd0;
+                if (v_count == v_max_cycles - 1)
+                    v_count <= 10'd0;
+                else
+                    v_count <= v_count + 1;
+            end
+            else
+                h_count <= h_count + 1;
+        end
+    end
 
     // X & Y pixel coordinates
-    assign pixel_x = (h_count < hori_back) ? 0 : (h_count - hori_back);
-    assign pixel_y = (v_count < vert_back) ? 0 : (v_count - vert_back);
+    assign pixel_x = (h_count < h_back_porch) ? 0 : (h_count - h_back_porch);
+    assign pixel_y = (v_count < v_back_porch) ? 0 : (v_count - v_back_porch);
     // H & V sync
-    assign h_sync = (h_count < hori_sync) ? 1'b0 : 1'b1;
-    assign v_sync = (v_count < vert_sync) ? 1'b0 : 1'b1;
-    // active display
-    assign hori_valid = (h_count < (hori_line - hori_front) && (h_count >= hori_back)) ? 1'b1 : 1'b0;
-    assign vert_valid = (v_count < (vert_line - vert_front) && (v_count >= vert_back)) ? 1'b1 : 1'b0;
-    assign blank_n = hori_valid && vert_valid;
+    assign h_sync = (h_count < h_sync_cycles) ? 1'b0 : 1'b1;
+    assign v_sync = (v_count < v_sync_cycles) ? 1'b0 : 1'b1;
+    // Blank generation
+    assign h_valid = (h_count < (h_max_cycles - h_front_porch) && (h_count >= h_back_porch)) ? 1'b1 : 1'b0;
+    assign v_valid = (v_count < (v_max_cycles - v_front_porch) && (v_count >= v_back_porch)) ? 1'b1 : 1'b0;
+    assign blank_n = h_valid && v_valid;
 
     always @ (negedge in_vga_clk)
     begin

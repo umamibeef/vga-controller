@@ -152,9 +152,11 @@ module DE10_Standard_default(
         );
 
     assign VGA_CLK = vga_clock;
+    // assign VGA_CLK = CLOCK_50;
     vga_controller vga_ins(
         .in_reset_n(DLY_RST),
         .in_vga_clock(vga_clock),
+        // .in_vga_clock(CLOCK_50),
         .in_text_vmem_data(TEXT_VRAM_DATA),
         .out_blank_n(VGA_BLANK_N),
         .out_h_sync(VGA_HS),
