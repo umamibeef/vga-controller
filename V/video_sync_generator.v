@@ -34,7 +34,7 @@ module video_sync_generator(
                     B <-C-><----D----><-E->
                    <------------A--------->
         The Unit used below are pixels;  
-          B->sync_cycle                   :h_sync_cycle
+          B->sync_cycle                   :hori_sync
           C->back_porch                   :hori_back
           D->visible area
           E->front porch                  :hori_front
@@ -50,7 +50,7 @@ module video_sync_generator(
                    P <-Q-><----R----><-S->
                   <-----------O---------->
         The Unit used below are horizontal lines;  
-          P->sync_cycle                   :v_sync_cycle
+          P->sync_cycle                   :vert_sync
           Q->back_porch                   :vert_back
           R->visible area
           S->front porch                  :vert_front
@@ -58,16 +58,16 @@ module video_sync_generator(
     */
 
     // Parameters
-    parameter hori_line  = 800;                           
+    parameter hori_line  = 800;
+    parameter hori_sync  = 96;
     parameter hori_back  = 144;
     parameter hori_front = 16;
     parameter vert_line  = 525;
     parameter vert_back  = 34;
     parameter vert_front = 11;
-    parameter h_sync_cycle = 96;
-    parameter v_sync_cycle = 2;
+    parameter vert_sync  = 2;
 
-    reg     [9:0] h_count;
+    reg     [10:0] h_count;
     reg     [9:0] v_count;
     wire    [9:0] pixel_x;
     wire    [9:0] pixel_y;
@@ -77,7 +77,7 @@ module video_sync_generator(
         begin
             if (in_reset)
                 begin
-                    h_count <= 10'd0;
+                    h_count <= 11'd0;
                     v_count <= 10'd0;
                 end
             else
@@ -96,14 +96,14 @@ module video_sync_generator(
         end
 
     // X & Y pixel coordinates
-    assign pixel_x = (h_count < (hori_back + h_sync_cycle)) ? 8 : (h_count - (hori_back + h_sync_cycle));
-    assign pixel_y = (v_count < (vert_back + v_sync_cycle)) ? 0 : (v_count - (vert_back + v_sync_cycle));
+    assign pixel_x = (h_count < hori_back) ? 0 : (h_count - hori_back);
+    assign pixel_y = (v_count < vert_back) ? 0 : (v_count - vert_back);
     // H & V sync
-    assign h_sync = (h_count < h_sync_cycle) ? 1'b0 : 1'b1;
-    assign v_sync = (v_count < v_sync_cycle) ? 1'b0 : 1'b1;
+    assign h_sync = (h_count < hori_sync) ? 1'b0 : 1'b1;
+    assign v_sync = (v_count < vert_sync) ? 1'b0 : 1'b1;
     // active display
-    assign hori_valid = (h_count < (hori_line - hori_front) && h_count >= hori_back) ? 1'b1 : 1'b0;
-    assign vert_valid = (v_count < (vert_line - vert_front) && v_count >= vert_back) ? 1'b1 : 1'b0;
+    assign hori_valid = (h_count < (hori_line - hori_front) && (h_count >= hori_back)) ? 1'b1 : 1'b0;
+    assign vert_valid = (v_count < (vert_line - vert_front) && (v_count >= vert_back)) ? 1'b1 : 1'b0;
     assign blank_n = hori_valid && vert_valid;
 
     always @ (negedge in_vga_clk)

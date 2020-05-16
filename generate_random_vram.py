@@ -9,6 +9,7 @@ def main():
 
     with open(outputfile, 'w') as file:
         for word in range(8192):
+            # for bit in range(8):
             for bit in range(8):
                 file.write(str(rand.randint(0, 1)))
             # Append an increasing number
