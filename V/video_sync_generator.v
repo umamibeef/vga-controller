@@ -96,7 +96,7 @@ module video_sync_generator(
         end
 
     // X & Y pixel coordinates
-    assign pixel_x = (h_count < (hori_back + h_sync_cycle)) ? 0 : (h_count - (hori_back + h_sync_cycle));
+    assign pixel_x = (h_count < (hori_back + h_sync_cycle)) ? 8 : (h_count - (hori_back + h_sync_cycle));
     assign pixel_y = (v_count < (vert_back + v_sync_cycle)) ? 0 : (v_count - (vert_back + v_sync_cycle));
     // H & V sync
     assign h_sync = (h_count < h_sync_cycle) ? 1'b0 : 1'b1;

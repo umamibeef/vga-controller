@@ -1,2 +1,9 @@
 incremental_db/
 db/
+*.rpt
+*.done
+*.smsg
+*.summary
+*.htm
+*.bak
+*.sof

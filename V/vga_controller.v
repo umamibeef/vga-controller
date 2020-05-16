@@ -182,7 +182,7 @@ module vga_controller(
 
     // Assign background and foreground signals
     assign text_vmem_data_foreground = in_text_vmem_data[11:8];
-    assign text_vmem_data_background = in_text_vmem_data[15:2];
+    assign text_vmem_data_background = in_text_vmem_data[15:12];
     assign vga_color = (current_pixel == 1'b0) ? text_vmem_data_background : text_vmem_data_foreground;
 
     // Latch valid data at falling edge;
