@@ -31,20 +31,20 @@ module text_vram(
 
 endmodule
 
-module Reset_Delay(iCLK,oRESET);
-input       iCLK;
-output reg  oRESET;
+module reset_delay(in_clock,out_reset);
+input       in_clock;
+output reg  out_reset;
 reg [19:0]  Cont;
 
-always@(posedge iCLK)
+always@(posedge in_clock)
 begin
     if(Cont!=20'hFFFFF)
     begin
         Cont    <=  Cont+1;
-        oRESET  <=  1'b0;
+        out_reset  <=  1'b0;
     end
     else
-    oRESET  <=  1'b1;
+    out_reset  <=  1'b1;
 end
 
 endmodule
@@ -141,48 +141,58 @@ module DE10_Standard_default(
     //=======================================================
 
     //  For VGA Controller
-    wire    VGA_CTRL_CLK;
-    wire    [12:0] TEXT_VRAM_ADDRESS;
-    wire    [15:0] TEXT_VRAM_DATA;
-
-    wire    DLY_RST;
+    wire    [12:0] text_vram_address;
+    reg     [12:0] offset_text_vram_address;
+    wire    [15:0] text_vram_data;
+    wire    delayed_reset;
 
     //=======================================================
     //  Structural coding
     //=======================================================
 
-    // initial //  
-    // Generate a 25 MHz pixel clock for VGA
-    reg [15:0] count;
-    reg vga_clock;
+    // Generate a 25 MHz clock for VGA and assign 50 MHz source to wire
+    reg [31:0] clock_div_count;
+    reg [31:0] offset_count;
+    reg vga_clock_25;
+    wire vga_clock_50;
+
+    assign vga_clock_50 = CLOCK_50;
     always @ (posedge CLOCK_50)
-        {vga_clock, count} <= count + 16'h8000;  // divide by 2: (2^16)/2 = 0x8000
+    begin
+        if (!delayed_reset)
+             offset_count <= 0;
+        else
+             offset_count <= offset_count + 1;
+
+        {vga_clock_25, clock_div_count} <= clock_div_count + 32'h80000000;  // divide by 2: (2^32)/2 = 0x80000000
+        
+        offset_text_vram_address <= text_vram_address ^ SW;
+    end
 
     // Reset Delay Timer
-    Reset_Delay r0  (
-        .iCLK(CLOCK_50),
-        .oRESET(DLY_RST)
+    reset_delay r0(
+        .in_clock(CLOCK_50),
+        .out_reset(delayed_reset),
         );
 
+    // Text VRAM
     text_vram m0(
-        .out_text_vmem_data(TEXT_VRAM_DATA),
-        .in_text_vmem_address(TEXT_VRAM_ADDRESS),
+        .out_text_vmem_data(text_vram_data),
+        .in_text_vmem_address(offset_text_vram_address),
         );
 
-    assign VGA_CLK = vga_clock;
-    // assign VGA_CLK = CLOCK_50;
+    assign VGA_CLK = vga_clock_50;
     vga_controller vga_ins(
-        .in_reset_n(DLY_RST),
-        .in_vga_clock(vga_clock),
-        // .in_vga_clock(CLOCK_50),
-        .in_text_vmem_data(TEXT_VRAM_DATA),
+        .in_reset_n(delayed_reset),
+        .in_vga_clock(vga_clock_50),
+        .in_text_vmem_data(text_vram_data),
         .out_blank_n(VGA_BLANK_N),
         .out_h_sync(VGA_HS),
         .out_v_sync(VGA_VS),
         .out_b_data(VGA_B),
         .out_g_data(VGA_G),
         .out_r_data(VGA_R),
-        .out_text_vmem_address(TEXT_VRAM_ADDRESS),
+        .out_text_vmem_address(text_vram_address),
         );
 
 endmodule

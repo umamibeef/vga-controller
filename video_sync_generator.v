@@ -57,6 +57,7 @@ module video_sync_generator(
           O->vertical line total length   :v_max_cycles
     */
 
+    /*
     // Parameters for 640x480 60Hz @ 25 MHz pixel clock
     // Horizontal
     parameter h_active_cycles = 640;
@@ -70,23 +71,21 @@ module video_sync_generator(
     parameter v_sync_cycles =   2;
     parameter v_back_porch =    33;
     parameter v_max_cycles =    v_active_cycles + v_front_porch + v_sync_cycles + v_back_porch;
+    */
 
-    /*
-    // This doesn't really work well - probably a weird format.
     // Parameters for 800x600 72 Hz @ 50 MHz pixel clock
     // Horizontal
-    parameter h_max_cycles =    1040;
     parameter h_active_cycles = 800;
     parameter h_front_porch =   56;
     parameter h_sync_cycles =   120;
     parameter h_back_porch  =   64;
+    parameter h_max_cycles =    h_active_cycles + h_front_porch + h_sync_cycles + h_back_porch;
     // Verical
-    parameter v_max_cycles =    666;
     parameter v_active_cycles = 600;
     parameter v_front_porch =   37;
     parameter v_sync_cycles =   6;
     parameter v_back_porch =    23;
-    */
+    parameter v_max_cycles =    v_active_cycles + v_front_porch + v_sync_cycles + v_back_porch;
 
     reg     [10:0] h_count;
     reg     [9:0] v_count;
